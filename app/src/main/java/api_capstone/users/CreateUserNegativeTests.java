@@ -1,7 +1,10 @@
 package api_capstone.users;
 
 import api_capstone.users.create.CreateUserRequestBody;
+import api_capstone.users.create.response.CreateUserErrorResponse;
+import api_capstone.users.create.response.CreateUserResponse;
 import io.restassured.http.ContentType;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -18,15 +21,16 @@ public class CreateUserNegativeTests {
     @Test
     public void shouldNotAllowToCreateUserWithInvalidEmail(){
         //Arrange
-       CreateUserRequestBody requestBody = CreateUserRequestBody.builder().firstName("Sarah")
-                .lastName("Sharma").email("sarahsharmagmail.com").build();
+        String email = "sarahsharmagmail.com";
+        CreateUserRequestBody requestBody = CreateUserRequestBody.builder().firstName("Sarah")
+                .lastName("Sharma").email(email).build();
 
         //Act
-        usersClient.create(requestBody)
-                .then()
-                .log().body()
+        CreateUserErrorResponse errorResponse = usersClient.createUserExpectingError(requestBody);
 
                 //Assert
-                .statusCode(400);
+        Assert.assertEquals(errorResponse.getStatusCode(),400);
+
+        errorResponse.assertResponse(email);
     }
 }
