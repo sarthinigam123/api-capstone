@@ -8,19 +8,18 @@ import static io.restassured.RestAssured.given;
 public class CreateUserNegativeTests {
     @Test
     public void shouldNotAllowToCreateUserWithInvalidEmail(){
-        given()
-                .accept(ContentType.JSON)
-                .contentType(ContentType.JSON)
-                .header("app-id","62ec44a25c53f4761649efac")
-                .body("{\n" +
-                        "    \"lastName\" : \"Sharma\",\n" +
-                        "    \"firstName\" : \"Sarah\",\n" +
-                        "    \"email\" : \"sarahsharmagmail.com\"\n" +
-                        "}")
-                .when()
-                .post("https://dummyapi.io/data/v1/user/create")
+        //Arrange
+        String body = "{\n" +
+                "    \"firstName\" : \"Sarah\",\n" +
+                "    \"lastName\" : \"Sharma\",\n" +
+                "    \"email\" : \"sarahsharmagmail.com\"\n" +
+                "}";
+
+        //Act
+        new UsersClient().createUser(body)
                 .then()
                 .log().body()
+                //Assert
                 .statusCode(400);
     }
 }
