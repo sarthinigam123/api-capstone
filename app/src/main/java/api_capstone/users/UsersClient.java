@@ -15,4 +15,11 @@ public class UsersClient {
                 .when()
                 .post("https://dummyapi.io/data/v1/user/create");
     }
+
+    public Response getAllUsers() {
+        return given()
+                .header("app-id", "62ec44a25c53f4761649efac")
+                .when()
+                .get("https://dummyapi.io/data/v1/user");
+    }
 }
