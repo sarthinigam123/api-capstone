@@ -22,7 +22,7 @@ public class CreateUserNegativeTests {
                 .lastName("Sharma").email("sarahsharmagmail.com").build();
 
         //Act
-        usersClient.createUser(requestBody)
+        usersClient.create(requestBody)
                 .then()
                 .log().body()
 

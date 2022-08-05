@@ -1,8 +1,10 @@
 package api_capstone.users;
 
 import api_capstone.users.create.CreateUserRequestBody;
+import api_capstone.users.create.response.CreateUserResponse;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -29,12 +31,12 @@ public class CreateUserTests {
                 .lastName("Sharma").email(email).build();
 
         //Act
-        usersClient.createUser(requestBody)
-                .then()
-                .log().body()
+        CreateUserResponse createUserResponse = usersClient.createUser(requestBody);
+
 
         //Assert
-                .statusCode(200);
+        Assert.assertEquals(createUserResponse.getStatusCode(),200);
+
     }
 
 
