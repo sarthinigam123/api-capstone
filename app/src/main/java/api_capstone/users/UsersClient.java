@@ -1,12 +1,13 @@
 package api_capstone.users;
 
+import api_capstone.users.create.CreateUserRequestBody;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
 public class UsersClient {
-    public Response createUser(String body) {
+    public Response createUser(CreateUserRequestBody body) {
         return given()
                 .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)

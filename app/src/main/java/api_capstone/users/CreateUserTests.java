@@ -1,5 +1,6 @@
 package api_capstone.users;
 
+import api_capstone.users.create.CreateUserRequestBody;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
@@ -23,14 +24,12 @@ public class CreateUserTests {
         //Arrange
 
         String email = String.format("%s@gmail.com", UUID.randomUUID());
-        String body = String.format("{\n" +
-                "    \"firstName\" : \"Sarah\",\n" +
-                "    \"lastName\" : \"Sharma\",\n" +
-                "    \"email\" : \"%s\"\n" +
-                "}",email);
+
+        CreateUserRequestBody requestBody = CreateUserRequestBody.builder().firstName("Sarah")
+                .lastName("Sharma").email(email).build();
 
         //Act
-        usersClient.createUser(body)
+        usersClient.createUser(requestBody)
                 .then()
                 .log().body()
 
