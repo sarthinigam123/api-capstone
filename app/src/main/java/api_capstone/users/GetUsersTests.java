@@ -1,6 +1,8 @@
 package api_capstone.users;
 
+import api_capstone.users.getAll.GetAllUsersResponse;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -17,10 +19,9 @@ public class GetUsersTests {
 
     @Test
     public void shouldGetAllUsers(){
-        usersClient.getAllUsers()
-                .then()
-                .statusCode(200)
-                .log().body();
+        GetAllUsersResponse getAllUserResponse = usersClient.getAllUsers();
+
+        Assert.assertEquals(getAllUserResponse.getStatusCode(),200);
     }
 
 
