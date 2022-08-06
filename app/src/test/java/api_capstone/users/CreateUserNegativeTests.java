@@ -12,7 +12,7 @@ public class CreateUserNegativeTests {
 
     private UsersClient usersClient;
 
-    @BeforeClass
+    @BeforeClass(groups={"users"})
     public void beforeClass(){
         usersClient = new UsersClient();
     }

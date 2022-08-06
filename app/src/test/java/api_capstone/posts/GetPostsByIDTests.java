@@ -10,14 +10,14 @@ import static io.restassured.RestAssured.given;
 
 public class GetPostsByIDTests {
     private PostsServices postsService;
-    @BeforeClass
+    @BeforeClass(groups={"posts"})
     public void beforeClass(){
         postsService=new PostsServices();
     }
 
-    @Test
+    @Test(groups={"posts"},priority = 2)
     public void shouldGetPostsById(){
-        String id="62ec9aff29a3abc616058ab4";
+        String id = "62ee7657b6e026ba21c56308";
         CreatePostResponse postResponse= postsService.getPost(id);
         Assert.assertEquals(postResponse.getText(),"Dog");
         Assert.assertEquals(postResponse.getStatusCode(),200);

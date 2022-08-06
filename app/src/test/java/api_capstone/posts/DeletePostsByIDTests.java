@@ -12,14 +12,14 @@ import static io.restassured.RestAssured.given;
 
 public class DeletePostsByIDTests {
     private PostsClient postsClient;
-    @BeforeClass
+    @BeforeClass(groups={"posts"})
     public void beforeClass(){
         postsClient=new PostsClient();
     }
-    @Test
+    @Test(groups={"posts"},priority = 3)
     public void shouldDeletePost(){
-        String id="62ec9aff29a3abc616058ab4";
-        Response response= postsClient.deletePost(id);
+        String id = "62ee7657b6e026ba21c56308";
+        Response response = postsClient.deletePost(id);
         response
                 .then()
                 .statusCode(200);

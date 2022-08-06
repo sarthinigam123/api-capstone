@@ -44,5 +44,16 @@ tasks.named('test') {
     useTestNG()
 }
 
+test{
+    useTestNG(){
+        includeGroups "users";
+    }
+}
+
+test{
+    useTestNG(){
+        includeGroups "posts";
+    }
+}
 
 

@@ -10,15 +10,15 @@ import static io.restassured.RestAssured.given;
 
 public class CreatePostsTests {
     private PostsServices postsService;
-    @BeforeClass
+    @BeforeClass(groups={"posts"})
     public void beforeClass(){
-        postsService=new PostsServices();
+        postsService = new PostsServices();
     }
 
-    @Test
+    @Test(groups={"posts"}, priority = 1)
     public void shouldCreatePost(){
-        Post body=new Post.Builder().build();
-        CreatePostResponse postResponse= postsService.createPost(body);
+        Post body = new Post.Builder().build();
+        CreatePostResponse postResponse = postsService.createPost(body);
         postResponse.assertPost(body);
     }
 

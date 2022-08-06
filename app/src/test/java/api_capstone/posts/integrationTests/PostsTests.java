@@ -13,18 +13,18 @@ public class PostsTests {
     private PostsClient postsClient;
     private PostsServices postsService;
 
-    @BeforeClass
+    @BeforeClass(groups={"posts"})
     public void beforeClass(){
         postsService = new PostsServices();
         postsClient = new PostsClient();
     }
 
-    @Test
+    @Test(groups={"posts"},priority = 4)
     public void shouldCreateAndDeletePost(){
         Post body = new Post.Builder().build();
         CreatePostResponse postResponse = postsService.createPost(body);
         postResponse.assertPost(body);
-        String id=postResponse.getId();
+        String id = postResponse.getId();
         Response response = postsClient.deletePost(id);
         response
                 .then()

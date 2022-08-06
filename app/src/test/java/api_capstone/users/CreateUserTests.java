@@ -14,7 +14,7 @@ public class CreateUserTests {
 
     private UsersClient usersClient;
 
-    @BeforeClass
+    @BeforeClass(groups={"users"})
     public void beforeClass(){
         usersClient = new UsersClient();
     }

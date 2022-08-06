@@ -15,11 +15,11 @@ public class Post {
     private int likes;
 
     public Post(Builder builder) {
-        this.text= builder.text;
-        this.image=builder.image;
-        this.likes=builder.likes;
-        this.owner=builder.owner;
-        this.tags=builder.tags;
+        this.text = builder.text;
+        this.image = builder.image;
+        this.likes = builder.likes;
+        this.owner = builder.owner;
+        this.tags = builder.tags;
     }
 
     public static class Builder{
@@ -30,15 +30,15 @@ public class Post {
         private List<String> tags;
         private int likes;
         public Builder(){
-            text="Dog";
-            image="https://www.shutterstock.com/image-photo/happy-puppy-dog-smiling-on-isolated-1799966587";
-            likes=179;
-            owner="62ec49163988ee637c5e47d2";
-            tags=new ArrayList<>();
+            text = "Dog";
+            image = "https://www.shutterstock.com/image-photo/happy-puppy-dog-smiling-on-isolated-1799966587";
+            likes = 179;
+            owner = "62ec49163988ee637c5e47d2";
+            tags = new ArrayList<>();
         }
 
         public Post build(){
-            Post requestBody=new Post(this);
+            Post requestBody = new Post(this);
             return requestBody;
         }
 
