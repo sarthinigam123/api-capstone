@@ -12,7 +12,7 @@ public class GetPostsByIDTests {
         given()
                 .header("app-id", "62ec44a25c53f4761649efac")
                 .when()
-                .get("https://dummyapi.io/data/v1/user/{postID}/post?limit=10")
+                .get("https://dummyapi.io/data/v1/post/62ecc3ed98146a9c9a3e004a")
                 .then()
                 .statusCode(200)
                 .log().body();

@@ -1,6 +1,6 @@
 package api_capstone.users;
 
-import api_capstone.users.create.CreateUserRequestBody;
+import api_capstone.users.create.User;
 import api_capstone.users.create.response.CreateUserErrorResponse;
 import api_capstone.users.create.response.CreateUserResponse;
 import api_capstone.users.getAll.GetAllUsersResponse;
@@ -10,21 +10,21 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
 public class UsersClient {
-    public CreateUserResponse createUser(CreateUserRequestBody body) {
+    public CreateUserResponse createUser(User body) {
         Response response = create(body);
         CreateUserResponse createUserResponse = response.as(CreateUserResponse.class);
         createUserResponse.setStatusCode(response.statusCode());
         return createUserResponse;
     }
 
-    public CreateUserErrorResponse createUserExpectingError(CreateUserRequestBody body){
+    public CreateUserErrorResponse createUserExpectingError(User body){
         Response response = create(body);
         CreateUserErrorResponse errorResponse = response.as(CreateUserErrorResponse.class);
         errorResponse.setStatusCode(response.statusCode());
         return errorResponse;
     }
 
-    public Response create(CreateUserRequestBody body) {
+    public Response create(User body) {
         Response response = given()
                 .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)

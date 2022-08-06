@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class CreateUserRequestBody {
+public class User {
     private String firstName;
     private String lastName;
     private String email;

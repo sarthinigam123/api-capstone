@@ -6,3 +6,10 @@ build/
 *.iml
 *.iws
 *.ipr
+
+out/
+target/
+
+.DS_Store
+
+settings.gradle
