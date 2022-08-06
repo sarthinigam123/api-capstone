@@ -1,11 +1,10 @@
 package api_capstone.posts.integrationTests;
 
 import api_capstone.posts.PostsClient;
-import api_capstone.posts.create.CreatePostRequestBody;
+import api_capstone.posts.create.Post;
 import api_capstone.posts.create.CreatePostResponse;
 import api_capstone.posts.services.PostsServices;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -22,7 +21,7 @@ public class PostsTests {
 
     @Test
     public void shouldCreateAndDeletePost(){
-        CreatePostRequestBody body = new CreatePostRequestBody.Builder().build();
+        Post body = new Post.Builder().build();
         CreatePostResponse postResponse = postsService.createPost(body);
         postResponse.assertPost(body);
         String id=postResponse.getId();

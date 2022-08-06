@@ -20,7 +20,7 @@ public class CreatePostResponse {
     @Setter
     private int statusCode;
 
-    public void assertPost(CreatePostRequestBody body) {
+    public void assertPost(Post body) {
         Assert.assertEquals(this.statusCode,200);
         Assert.assertEquals(this.text,body.getText());
         Assert.assertEquals(this.image,body.getImage());

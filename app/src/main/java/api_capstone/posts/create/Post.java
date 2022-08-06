@@ -1,21 +1,20 @@
 package api_capstone.posts.create;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
 import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class CreatePostRequestBody {
+public class Post {
     private String text;
     private String image;
     private String owner;
     private List<String> tags;
     private int likes;
 
-    public CreatePostRequestBody(Builder builder) {
+    public Post(Builder builder) {
         this.text= builder.text;
         this.image=builder.image;
         this.likes=builder.likes;
@@ -38,8 +37,8 @@ public class CreatePostRequestBody {
             tags=new ArrayList<>();
         }
 
-        public CreatePostRequestBody build(){
-            CreatePostRequestBody requestBody=new CreatePostRequestBody(this);
+        public Post build(){
+            Post requestBody=new Post(this);
             return requestBody;
         }
 

@@ -1,14 +1,16 @@
 package api_capstone.users;
 
 import api_capstone.users.create.User;
-import api_capstone.users.create.response.CreateUserErrorResponse;
+import api_capstone.users.create.response.CreateUserResponse;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.UUID;
+
 import static io.restassured.RestAssured.given;
 
-public class CreateUserNegativeTests {
+public class CreateUserTests {
 
     private UsersClient usersClient;
 
@@ -16,19 +18,24 @@ public class CreateUserNegativeTests {
     public void beforeClass(){
         usersClient = new UsersClient();
     }
-    @Test
-    public void shouldNotAllowToCreateUserWithInvalidEmail(){
+
+    @Test(groups={"users"})
+    public void shouldCreateUser(){
         //Arrange
-        String email = "sarahsharmagmail.com";
+
+        String email = String.format("%s@gmail.com", UUID.randomUUID());
+
         User requestBody = User.builder().firstName("Sarah")
                 .lastName("Sharma").email(email).build();
 
         //Act
-        CreateUserErrorResponse errorResponse = usersClient.createUserExpectingError(requestBody);
+        CreateUserResponse createUserResponse = usersClient.createUser(requestBody);
 
-                //Assert
-        Assert.assertEquals(errorResponse.getStatusCode(),400);
 
-        errorResponse.assertResponse(email);
+        //Assert
+        Assert.assertEquals(createUserResponse.getStatusCode(),200);
+
     }
+
+
 }

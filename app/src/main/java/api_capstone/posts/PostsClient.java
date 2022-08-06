@@ -1,6 +1,6 @@
 package api_capstone.posts;
 
-import api_capstone.posts.create.CreatePostRequestBody;
+import api_capstone.posts.create.Post;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 public class PostsClient {
 
     private String appId="62ec44a25c53f4761649efac";
-    public Response createPost(CreatePostRequestBody body){
+    public Response createPost(Post body){
         Response response = given()
                 .contentType(ContentType.JSON)
                 .header("app-id", appId)

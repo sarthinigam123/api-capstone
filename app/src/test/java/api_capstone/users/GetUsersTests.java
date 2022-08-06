@@ -17,7 +17,7 @@ public class GetUsersTests {
         usersClient = new UsersClient();
     }
 
-    @Test
+    @Test(groups={"users"})
     public void shouldGetAllUsers(){
         GetAllUsersResponse getAllUserResponse = usersClient.getAllUsers();
 
