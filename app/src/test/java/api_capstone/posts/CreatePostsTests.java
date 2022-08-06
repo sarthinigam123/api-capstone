@@ -6,8 +6,6 @@ import api_capstone.posts.services.PostsServices;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.given;
-
 public class CreatePostsTests {
     private PostsServices postsService;
     @BeforeClass(groups={"posts"})
@@ -21,7 +19,5 @@ public class CreatePostsTests {
         CreatePostResponse postResponse = postsService.createPost(body);
         postResponse.assertPost(body);
     }
-
-
 
 }
