@@ -8,7 +8,6 @@ import static io.restassured.RestAssured.given;
 
 public class PostsClient {
 
-
     private String appId="62ec44a25c53f4761649efac";
     public Response createPost(CreatePostRequestBody body){
         Response response = given()

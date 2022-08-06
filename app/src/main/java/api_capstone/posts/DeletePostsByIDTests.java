@@ -1,18 +1,27 @@
 package api_capstone.posts;
 
+import api_capstone.posts.PostsClient;
+import api_capstone.posts.create.CreatePostResponse;
+import io.restassured.response.Response;
+import org.hamcrest.Matchers;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
 public class DeletePostsByIDTests {
+    private PostsClient postsClient;
+    @BeforeClass
+    public void beforeClass(){
+        postsClient=new PostsClient();
+    }
     @Test
     public void shouldDeletePost(){
-        given()
-                .header("app-id","62ec44a25c53f4761649efac")
-                .when()
-                .delete("https://dummyapi.io/data/v1/post/62ecc3ed98146a9c9a3e004a")
+        String id="62ec9aff29a3abc616058ab4";
+        Response response= postsClient.deletePost(id);
+        response
                 .then()
-                .statusCode(200)
-                .log().body();
+                .statusCode(200);
     }
 }

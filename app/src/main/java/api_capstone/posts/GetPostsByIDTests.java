@@ -17,7 +17,7 @@ public class GetPostsByIDTests {
 
     @Test
     public void shouldGetPostsById(){
-        String id="62ecc3ed98146a9c9a3e004a";
+        String id="62ec9aff29a3abc616058ab4";
         CreatePostResponse postResponse= postsService.getPost(id);
         Assert.assertEquals(postResponse.getText(),"Dog");
         Assert.assertEquals(postResponse.getStatusCode(),200);
